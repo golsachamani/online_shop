@@ -1,6 +1,11 @@
-<form method="post">
-    {% csrf_token%}
-    {{form.as_p}}
-    <input type="submit" value="log in">
+{% extends '_base.html'%}
 
-</form
+{% block page_title%}log in{% endblock%}
+{% block content%}
+    <form method="post">
+        {% csrf_token%}
+        {{form.as_p}}
+        <input type="submit" value="log in">
+
+    </form
+{%endblock%}
