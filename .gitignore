@@ -1,2 +1,3 @@
-/venv
-/vars
+venv/
+.env
+__pycache__
