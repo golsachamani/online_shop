@@ -37,12 +37,15 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #third party app
+    
     'allauth',
     'allauth.account',
+    #local apps
     'accounts',
     'pages',
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -77,12 +80,13 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS = [
     
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
+   'django.contrib.auth.backends.ModelBackend',
 
-    # `allauth` specific authentication methods, such as login by email
+    #django allauth
     'allauth.account.auth_backends.AuthenticationBackend',
     ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = (
     "django.middleware.common.CommonMiddleware",
@@ -156,3 +160,11 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+ # all auth setting
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL =True
