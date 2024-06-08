@@ -48,11 +48,12 @@ INSTALLED_APPS = [
     'rosetta',
     'allauth',
     'allauth.account',
+    'cart',
     #local apps
     'accounts',
     'pages',
     'products',
-    'cart',
+    
 ]
 SITE_ID = 1
 MIDDLEWARE = [

@@ -15,7 +15,7 @@ class Product(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('product_detail', args =[self.id])
+        return reverse('product:product_detail', args=[self.id])
 
 class ActiveCommentManager(models.Manager):
     def get_queryset(self):

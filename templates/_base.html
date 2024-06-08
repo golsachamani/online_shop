@@ -21,8 +21,7 @@
     <link rel="stylesheet" href="{% static 'css/vendor.css'%}">
 
     <!-- style css -->
-    <link rel="stylesheet" href="{% static 'css/main.css'%}">
-
+  
 </head>
 <body dir='rtl'>
     <!-- {% if user.is_authenticated%}
@@ -33,13 +32,18 @@
      -->
     
      <header class="header">
+        <div>  <link rel="stylesheet" href="{% static 'css/main.css'%}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+                <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0z"/>
+              </svg>
+            </div>
         <div class="header-inner fixed-header">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-xl-9 col-lg-8 col-5 col-xs-0 col-none col-sm-block p-0">
                         <nav class="main-navigation">
                             <div class="site-branding" style="margin-right: 30px;">
-                                <a href="{% url 'product_list'%}" class="logo">
+                                <a href="{% url 'product:product_list'%}" class="logo">
                                     <figure class="logo--normal d-none d-sm-block">
                                         <img class="px-5" src="assets/img/codingyar_logo.png" style="max-height: 50px; margin-bottom: -15px;" alt="Logo">
                                     </figure>
@@ -48,7 +52,7 @@
                             <div class="mainmenu-nav d-none d-lg-block w-100 pr-3">
                                 <ul class="mainmenu d-lg-flex jusity-content-end jusity-content-lg-start pt-4">
                                     <li class="mainmenu__item menu-item-has-children active">
-                                        <a href="{% url 'product_list'%}" class="mainmenu__link">
+                                        <a href="{% url 'product:product_list'%}" class="mainmenu__link">
                                             <span class="mm-text">خانه</span>
                                         </a>
                                     </li>
@@ -129,6 +133,11 @@
 
     <!-- Main JS -->
     <script src="{% static 'js/main.js'%}"></script>
+    <picture>
+        <source srcset="..." type="image/svg+xml">
+        <img src="..." class="img-fluid img-thumbnail" alt="...">
+      </picture>
+      
 
 </body>
 </html>

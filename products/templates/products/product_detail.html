@@ -52,14 +52,14 @@
                                     <span class="money old-price text-danger">۲۱۰,۰۰۰ {% trans '$'%}</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                    <div class="quantity-wrapper d-flex justify-content-start">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
-                                        </div>
+                                 <form action="{%url 'cart:cart_add' product.id%}" method="post">
+                                    {%csrf_token%}
+                                    <!-- {{add_to_cart_form.as_p}} -->
+                                    <div class="quantity"><input type="number" class="quantity-input" name="quantity" value="1" min="1" max="30">
                                     </div>
-                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2" onclick="window.location.href='cart.html'">
-                                        {% trans 'add to cart'%}
-                                    </button>
+                                    <input type="submit" value="{% trans 'add to cart'%}" class="btn-submit">
+                                 </form> 
+                                  
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
                                     <p><span class="m-0">دسته بندی ها:</span>
@@ -155,7 +155,7 @@
                                                     
                                                         <span class="reply-title pull-right">{% trans 'write your comment'%}</span>
                                                         <br>
-                                                    <form action="{%url 'comment_create' product.id%}"  method="post">
+                                                    <form action="{%url 'product:comment_create' product.id%}"  method="post">
                                                         {%csrf_token%}
                                                         {{context_form.as_p}}
                                                         <input type="submit" value="{% trans 'submit'%}" class="btn-submit">
