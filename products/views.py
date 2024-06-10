@@ -3,6 +3,9 @@ from django.forms import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404
 from django.views import generic
+from django.contrib import messages
+from django.utils.translation import gettext as _
+
 from . models import Product
 from . forms import *
 from cart.forms import AddToCartProductForm
@@ -32,4 +35,6 @@ class CommentCreateView(generic.CreateView):
         pk = self.kwargs['pk']
         product = get_object_or_404(Product, id = pk )
         obj.product = product
+        #messages.success(self.request,_('successfully') )
         return super().form_valid(form)
+    

@@ -1,4 +1,5 @@
 {% load static%}
+{%load i18n%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,10 +83,54 @@
                                     <i class="flaticon flaticon-like"></i>
                                 </a>
                             </li>
+                              <!-- Mini Cart Start -->
+  <aside class="mini-cart" id="miniCart">
+    <div class="mini-cart-wrapper">
+        <a href="" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+        <div class="mini-cart-inner">
+            <h3 class="mini-cart__heading mb--40 mb-lg--30 text-right">cart</h3>
+            <div class="mini-cart__content">
+                <ul class="mini-cart__list text-right">
+                    {% for item in cart%}
+                        <li class="mini-cart__product d-flex justify-content-between">
+                            <div class="mini-cart__product__image">
+                                <a href="#">
+                                    <img src="assets/img/products/prod-1-100x100.jpg" >
+                                </a>
+                            </div>
+                            <div class="mini-cart__product__content pt-2">
+                                <span class="mini-cart__product__title d-flex flex-row justify-content-between">
+                                    <a href="#"> {{item.product.title}}</a>
+                                    <a href="#" class="">
+                                        &#10060;
+                                    </a>
+                                </span>
+                                <span class="mini-cart__product__quantity">
+                                    <span>{{item.product.price}} تومان</span> &#215; <span>{{item.quantity}}</span> 
+                                </span>
+                            </div>
+                        </li>
+                    
+                    {% endfor %}
+                  
+                </ul>
+                <div class="mini-cart__total">
+                    <span>total</span>
+                    <span class="ammount">  {{cart.get_total_price}} تومان </span>
+                </div>
+                <div class="mini-cart__buttons">
+                    <a href="{% url 'cart:cart_detail'%}" class="btn btn-fullwidth btn-bg-sand mb--20">مشاهده سبد خرید</a>
+                    <a href="checkout.html" class="btn btn-fullwidth btn-bg-sand">پرداخت</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- Mini Cart End -->
                             <li class="header-toolbar__item mini-cart-item">
                                 <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                     <i class="flaticon flaticon-shopping-cart"></i>
-                                    <sup class="mini-cart-count">2</sup>
+                                    <sup class="mini-cart-count">{{cart|length}}</sup>
                                 </a>
                             </li>
                             <li class="header-toolbar__item user-info">
@@ -93,18 +138,25 @@
                                     <i class="flaticon flaticon-user"></i>
                                 </a>
                                 <ul class="user-info-menu">
-                                    <li>
-                                        <a class="text-right" href="my-account.html">حساب کاربری</a>
-                                    </li>
-                                    <li>
-                                        <a class="text-right" href="cart.html">سبد خرید</a>
-                                    </li>
-                                    <li>
-                                        <a class="text-right" href="wishlist.html">علاقه مندی ها</a>
-                                    </li>
-                                    <li>
-                                        <a class="text-right" href="order-tracking.html">تاریخچه سفارشات</a>
-                                    </li>
+                                    {% if user.is_authenticated%}
+                                        <li>
+
+                                            <a class="text-right" href="{% url 'account_logout'%}"> logout</a>
+
+                                        </li>
+                                        <li>
+                                            <a class="text-right" href="profile.html">profile</a>
+                                        </li>
+                                    {% else%}
+                                        <li>
+                                            <a class="text-right" href="{% url 'account_login'%}">login </a>
+                                        </li>
+                                        <li>
+                                            <a class="text-right" href="{%url 'account_signup'%}">signup</a>
+                                        </li>
+                                    {%endif%}
+                                   
+                                   
                                 </ul>
                             </li>
                             <li class="header-toolbar__item">
@@ -125,7 +177,15 @@
     </header>
     
     <!-- Header End --> 
-    {% block content %} {% endblock content%}
+     {% if messages%}
+        <div class="container">
+            {% for message in messages%}
+                <div class="alert alert-{{message.tags}}">{{message}}</div>
+            {%endfor%}
+        </div>
+    {% endif%}
+    {% block content %}
+     {% endblock content%}
       <!-- ************************* JS Files ************************* -->
 
     <!-- jQuery JS -->

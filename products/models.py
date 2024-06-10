@@ -38,4 +38,4 @@ class Comment(models.Model):
     objects = models.manager
     active_comment_manager = ActiveCommentManager()
     def get_absolute_url(self):
-        return reverse('product_detail', args=[self.product.id])
+        return reverse('product:product_detail', args=[self.product.id])
