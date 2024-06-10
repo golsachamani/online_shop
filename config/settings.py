@@ -48,11 +48,13 @@ INSTALLED_APPS = [
     'rosetta',
     'allauth',
     'allauth.account',
-    'cart',
+    
     #local apps
     'accounts',
     'pages',
     'products',
+    'cart',
+    'order',
     
 ]
 SITE_ID = 1

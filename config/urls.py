@@ -26,4 +26,5 @@ urlpatterns = [
    path('cart/', include('cart.urls')),
     #rosetta url
     path('rosetta/', include('rosetta.urls')),
+    path('order/', include('order.urls'))
 ]+ static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

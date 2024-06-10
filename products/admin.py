@@ -3,7 +3,7 @@ from .models import Product, Comment
 
 class OfferPropertyInline(admin.TabularInline):
     model = Comment
-    fields = ['stars', 'author', 'active', 'body',]
+    fields = ['order', 'product', 'quantity', 'price',]
 
 
 @admin.register(Product)
