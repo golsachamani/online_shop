@@ -44,13 +44,13 @@
                                     <span class="money old-price text-danger">۲۱۰,۰۰۰ {% trans '$'%}</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                 <form action="{%url 'cart:cart_add' product.id%}" method="post">
-                                    {%csrf_token%}
-                                    <!-- {{add_to_cart_form.as_p}} -->
-                                    <div class="quantity"><input type="number" class="quantity-input" name="quantity" value="1" min="1" max="30">
-                                    </div>
-                                    <input type="submit" value="{% trans 'add to cart'%}" class="btn-submit">
-                                 </form> 
+                                    <form action="{%url 'cart:cart_add' product.id%}" method="post">
+                                        {%csrf_token%}
+                                        {{add_to_cart_form.as_p}}
+                                        <div class="quantity"><input type="number" class="quantity-input" name="quantity" value="1" min="1" max="30">
+                                        </div>
+                                        <input type="submit" value="{% trans 'add to cart'%}" class="btn-submit">
+                                    </form> 
                                   
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">

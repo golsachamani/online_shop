@@ -17,7 +17,13 @@
                         <h2>جزئیات سفارش</h2>
                     </div>
                     <div class="checkout-form">
-                        <form action="#" class="form form--checkout">
+                        <form role="form" action="" method="post" class="checkout-form">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit">Submit</button>
+                        </form>
+                        
+                        <!-- <form action="#" class="form form--checkout">
                             <div class="form-row mb--20">
                                 <div class="form__group col-md-6 mb-sm--30">
                                     <label for="billing_fname" class="form__label form__label--2">نام  <span class="required">*</span></label>
@@ -52,7 +58,7 @@
                                     <textarea class="form__input form__input--2 form__input--textarea" id="orderNotes" name="orderNotes" placeholder="اگر یادداشتی دارید در اینجا وارد کنید. در غیر این صورت این مکان را خالی بگذارید"></textarea>
                                 </div>
                             </div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
                 <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
@@ -105,5 +111,5 @@
     </div>
 </div>
 <!-- Main Content Wrapper Start -->
-
+{% include 'cart/cart_sidebar.html'%}
 {% endblock content%}

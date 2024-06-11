@@ -113,3 +113,8 @@ class Cart(object):
 
         return total_price
  
+    def is_empty(self):
+        if self.cart:
+            return False
+        else:
+            return True

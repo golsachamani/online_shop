@@ -4,6 +4,7 @@ from products.models import Product
 from . forms import AddToCartProductForm
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
 
 #Create your views here.
 def cart_detail_view(request):
@@ -35,4 +36,14 @@ def cart_remove_view(request,product_id):
     product = get_object_or_404(Product,id=product_id)
     cart.remove(product)
     return  HttpResponseRedirect(reverse('cart:cart_detail'))
+@require_POST
+def clear_cart(request):
+    cart = Cart(request)
+    if len(cart):
+        cart.clear()
+        messages.success(request, 'clear successfully')
+    else:
+        messages.warning(request, 'your cart already empty')
+    return redirect('product:product_list')
+
 
